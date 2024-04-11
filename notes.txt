@@ -1,0 +1,2 @@
+(auth) (root) its a way of grouping route without affecting the route url
+localhost:3000/ signin >> here the auth will not included in the route url because of grouping ()
