@@ -7,12 +7,16 @@ import { useRouter } from 'next/navigation';
 import MeetingModel from "./MeetingModel";
 
 const MeetingTypeList = () => {
-  const [meetinState, setMeetingState] = useState<'isScheduledMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefind >()
+  const [meetingState, setMeetingState] = useState<'isScheduledMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefind >()
   const router = useRouter()
+
+  const createMeeting = () => {
+
+  }
   
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <HomeCard
+       <HomeCard 
         img="/icons/add-meeting.svg"
         title="New Meeting"
         className="bg-orange-1"
@@ -26,8 +30,7 @@ const MeetingTypeList = () => {
         className="bg-blue-1"
         handleClick={() => setMeetingState('isJoiningMeeting')}
       />
-       
-       <HomeCard
+      <HomeCard
         img="/icons/schedule.svg"
         title="Schedule Meeting"
         description="Plan your meeting"
@@ -42,7 +45,14 @@ const MeetingTypeList = () => {
         handleClick={() => router.push('/recordings')}
       />
 
-      <MeetingModel  />
+      <MeetingModel 
+        isOpen = { meetingState === 'isInstantMeeting'}
+        onClose = { () => {setMeetingState(undefined)}}
+        title="start an Instant Meeting"
+        className ="text-center"
+        buttonText='Start Meeting'
+        handleClick = { createMeeting }
+       />
  
 
     </section>
