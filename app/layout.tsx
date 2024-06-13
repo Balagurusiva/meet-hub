@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/toaster"
 import { Inter } from "next/font/google";
 
 import "@stream-io/video-react-sdk/dist/css/styles.css";
@@ -39,6 +40,7 @@ export default function RootLayout({
       >
         <body className={`${inter.className} bg-dark-2`}> 
           {children}
+          <Toaster />
         </body>
       </ClerkProvider>
     </html>
